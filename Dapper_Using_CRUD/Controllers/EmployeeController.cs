@@ -1,12 +1,13 @@
 using Dapper_Using_CRUD.Models;
 using Dapper_Using_CRUD.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dapper_Using_CRUD.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class EmployeeController : ControllerBase
+    //[Authorize]
+    [AllowAnonymous]
+    public class EmployeeController : BaseController
     {
 
         private readonly ILogger<EmployeeController> _logger;
