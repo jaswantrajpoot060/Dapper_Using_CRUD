@@ -25,7 +25,7 @@ namespace Dapper_Using_CRUD.Controllers
             var employee = await _employeesRepo.GetEmployee();
             if (!employee.Any())
             {
-                return NotFound("Records not found");
+                throw new KeyNotFoundException("Records not found");
             }
             return Ok(employee);
         }
@@ -36,11 +36,10 @@ namespace Dapper_Using_CRUD.Controllers
             var employee = await _employeesRepo.GetByIdEmployee(Id);
             if (!employee.Any())
             {
-                return NotFound("Record not found");
+                throw new KeyNotFoundException("Record not found");
             }
             return Ok(employee);
         }
-
 
         [HttpPost("CreateEmployee")]
         public async Task<IActionResult> CreateEmployee(Employees employees)
